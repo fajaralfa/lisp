@@ -1,3 +1,4 @@
+#include "file_reader.h"
 #include "tokenizer.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,16 +8,24 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
     return EXIT_FAILURE;
   }
-  char *filename = argv[1];
+  const char *filename = argv[1];
 
-  FILE *fp = fopen(filename, "r");
-  if (!fp) {
-    perror("fopen");
+  Tokenizer tokenizer;
+
+  size_t filesize;
+  char *source = read_file(filename, &filesize);
+  if (!source) {
+    fprintf(stderr, "Failed to read file\n");
     return EXIT_FAILURE;
   }
 
-  tokenize(fp);
+  tokenizer_init(&tokenizer, source);
+  tokenize(&tokenizer);
 
-  fclose(fp);
+  tokenizer_debug(&tokenizer);
+
+  tokenizer_free(&tokenizer);
+  free(source);
+
   return EXIT_SUCCESS;
 }

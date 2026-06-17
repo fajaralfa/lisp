@@ -12,6 +12,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src)
 # Collect source files
 set(SOURCES
     src/main.c
+    src/file_reader.c
     src/tokenizer.c
     src/parser.c
     src/vm.c
