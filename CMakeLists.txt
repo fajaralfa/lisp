@@ -16,6 +16,7 @@ set(SOURCES
     src/tokenizer.c
     src/parser.c
     src/vm.c
+    src/dsa.c
 )
 
 # Create executable

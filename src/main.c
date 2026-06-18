@@ -1,4 +1,5 @@
 #include "file_reader.h"
+#include "parser.h"
 #include "tokenizer.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,7 +23,7 @@ int main(int argc, char *argv[]) {
   tokenizer_init(&tokenizer, source);
   tokenize(&tokenizer);
 
-  tokenizer_debug(&tokenizer);
+  parse(&tokenizer);
 
   tokenizer_free(&tokenizer);
   free(source);

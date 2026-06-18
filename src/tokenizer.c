@@ -23,20 +23,20 @@ void tokenizer_free(Tokenizer *t) {
 }
 
 static char *token_type_label[] = {
-  [TOKEN_IDENTIFIER]="TOKEN_IDENTIFIER",
-  [TOKEN_NUMBER]="TOKEN_NUMBER",
-  [TOKEN_LEFT_BRACE]="TOKEN_LEFT_BRACE",
-  [TOKEN_RIGHT_BRACE]="TOKEN_RIGHT_BRACE",
-  [TOKEN_DOUBLE_QUOTE]="TOKEN_DOUBLE_QUOTE",
-  [TOKEN_PLUS]="TOKEN_PLUS",
-  [TOKEN_MINUS]="TOKEN_MINUS",
-  [TOKEN_STAR]="TOKEN_STAR",
-  [TOKEN_SLASH]="TOKEN_SLASH",
-  [TOKEN_EQ]="TOKEN_EQ",
-  [TOKEN_LESSER]="TOKEN_LESSER",
-  [TOKEN_LESSER_EQ]="TOKEN_LESSER_EQ",
-  [TOKEN_GREATER]="TOKEN_GREATER",
-  [TOKEN_GREATER_EQ]="TOKEN_GREATER_EQ",
+    [TOKEN_IDENTIFIER] = "TOKEN_IDENTIFIER",
+    [TOKEN_NUMBER] = "TOKEN_NUMBER",
+    [TOKEN_LEFT_BRACE] = "TOKEN_LEFT_BRACE",
+    [TOKEN_RIGHT_BRACE] = "TOKEN_RIGHT_BRACE",
+    [TOKEN_DOUBLE_QUOTE] = "TOKEN_DOUBLE_QUOTE",
+    [TOKEN_PLUS] = "TOKEN_PLUS",
+    [TOKEN_MINUS] = "TOKEN_MINUS",
+    [TOKEN_STAR] = "TOKEN_STAR",
+    [TOKEN_SLASH] = "TOKEN_SLASH",
+    [TOKEN_EQ] = "TOKEN_EQ",
+    [TOKEN_LESSER] = "TOKEN_LESSER",
+    [TOKEN_LESSER_EQ] = "TOKEN_LESSER_EQ",
+    [TOKEN_GREATER] = "TOKEN_GREATER",
+    [TOKEN_GREATER_EQ] = "TOKEN_GREATER_EQ",
 };
 
 static void print_literal(Tokenizer *t, Token tok) {
@@ -164,11 +164,13 @@ void tokenize(Tokenizer *t) {
     }
     case '<': {
       if (t->source[t->start + 1] == '=') {
-        tokenizer_push(t, (Token){TOKEN_LESSER_EQ, t->start, t->start + 2, t->pos});
+        tokenizer_push(
+            t, (Token){TOKEN_LESSER_EQ, t->start, t->start + 2, t->pos});
         t->pos.col += 2;
         t->start += 2;
       } else {
-        tokenizer_push(t, (Token){TOKEN_LESSER, t->start, t->start + 1, t->pos});
+        tokenizer_push(t,
+                       (Token){TOKEN_LESSER, t->start, t->start + 1, t->pos});
         t->pos.col++;
         t->start++;
       }
@@ -176,11 +178,13 @@ void tokenize(Tokenizer *t) {
     }
     case '>': {
       if (t->source[t->start + 1] == '=') {
-        tokenizer_push(t, (Token){TOKEN_GREATER_EQ, t->start, t->start + 2, t->pos});
+        tokenizer_push(
+            t, (Token){TOKEN_GREATER_EQ, t->start, t->start + 2, t->pos});
         t->pos.col += 2;
         t->start += 2;
       } else {
-        tokenizer_push(t, (Token){TOKEN_GREATER, t->start, t->start + 1, t->pos});
+        tokenizer_push(t,
+                       (Token){TOKEN_GREATER, t->start, t->start + 1, t->pos});
         t->pos.col++;
         t->start++;
       }
