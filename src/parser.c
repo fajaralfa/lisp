@@ -1,6 +1,4 @@
 #include "parser.h"
-#include "dsa.h"
-#include "tokenizer.h"
 #include <stdio.h>
 
 void parser_init(Parser *parser, Tokenizer *tokenizer) {
