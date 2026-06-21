@@ -9,7 +9,7 @@
 
 <list>       ::= '(' <sexp-list> ')'
 
-<sexp-list>  ::= <sexp> | <sexp> <sexp-list>
+<sexp-list>  ::= <sexp> <sexp-list> | <empty>
 
 <symbol>     ::= <letter> | <symbol> <letter> | <symbol> <digit> | <symbol> <special>
                ;; Symbols usually cannot start with a digit and contain alphanumeric + ! $ % & * / : < = > ? @ ^ _ ~
