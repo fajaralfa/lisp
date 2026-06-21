@@ -1,7 +1,5 @@
 # Minimal Lisp
 
-installation
-
 ## Grammar
 
 ```bnf
